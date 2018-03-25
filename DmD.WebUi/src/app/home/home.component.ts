@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService : DataService) { }
 
   private maps = [ ];
 
   public ngOnInit() {
-    this.maps = [ { Id: 0, Name: 'Map0' } ];
+    this.dataService.getMaps().subscribe(maps => {
+      this.maps = maps;
+    });
   }
 
 }

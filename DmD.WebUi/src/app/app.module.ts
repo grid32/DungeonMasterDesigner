@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { DataService } from './services/data.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
