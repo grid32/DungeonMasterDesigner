@@ -11,7 +11,7 @@ export class DataService {
   private apiPath = environment.apiPath;
 
   public getMaps() {
-    return this.http.get(this.apiPath + "maps/index", { withCredentials: true})
+    return this.http.get(this.apiPath + "map/all", { withCredentials: true})
     .map((res: Response) => res.json());
   }
 }
