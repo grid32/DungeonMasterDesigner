@@ -14,4 +14,9 @@ export class DataService {
     return this.http.get(this.apiPath + "map/all", { withCredentials: true})
     .map((res: Response) => res.json());
   }
+
+  public addMap() {
+    return this.http.post(this.apiPath + "map/add", {id: 0, name: "Test"},{ withCredentials: true})
+    .map((res: Response) => res.json());
+  }
 }

@@ -1,0 +1,11 @@
+<div *ngIf="constantService.mode == constantService.modes.Read">
+  <div>
+    <button (click)='newMap()'>Create new map</button>
+  </div>
+  <div id='map-select' *ngIf='maps.length > 0'>
+    <br>
+    <select [(ngModel)]='selectedMap'>
+      <option *ngFor='let m of maps' [ngValue]='m.Id'>{{m.Name}}</option>
+    </select>
+  </div>
+</div>

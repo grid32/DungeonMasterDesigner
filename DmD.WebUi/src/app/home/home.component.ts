@@ -18,4 +18,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  public newMap() {
+    this.dataService.addMap().subscribe(map => {
+      this.maps = [...this.maps, map];
+    })
+  }
+
 }

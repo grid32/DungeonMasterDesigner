@@ -7,12 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { DataService } from './services/data.service';
 import { HttpModule } from '@angular/http';
+import { MapComponent } from './map/map.component';
+import { ConstantService } from './services/constant.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   providers: [
-    DataService
+    DataService,
+    ConstantService
   ],
   bootstrap: [ AppComponent ]
 })
