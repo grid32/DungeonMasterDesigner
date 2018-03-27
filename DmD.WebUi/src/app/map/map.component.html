@@ -1,6 +1,6 @@
-<div *ngIf="constantService.mode == constantService.modes.Read">
+<div *ngIf='constantService.mode == constantService.modes.Read'>
   <div>
-    <button (click)='newMap()'>Create new map</button>
+    <button class='btn btn-success' (click)='newMap()'>Create new map</button>
   </div>
   <div id='map-select' *ngIf='maps.length > 0'>
     <br>
@@ -8,4 +8,13 @@
       <option *ngFor='let m of maps' [ngValue]='m.Id'>{{m.Name}}</option>
     </select>
   </div>
+</div>
+<div *ngIf='constantService.mode == constantService.modes.Create'>
+  <h2>Create a Map</h2>
+  <div>
+      Name:
+      <input [(ngModel)]='map.Name'>
+  </div>
+  <br>
+  <button class='btn btn-default' [disabled]='saving' (click)='submitMap()'>{{saving ? 'Submitting...' : 'Submit'}}</button>
 </div>
