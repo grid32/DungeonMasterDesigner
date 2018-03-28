@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ConstantService } from '../services/constant.service';
 import { Map } from '../services/map'
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -29,6 +30,11 @@ export class MapComponent implements OnInit {
 
   public newMap() {
     this.constantService.mode = this.constantService.modes.Create;
+  }
+
+  public editMap(map : Map) {
+    this.toggleMode(this.constantService.modes.Update);
+    this.map = map;
   }
 
   public submitMap() {
