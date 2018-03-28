@@ -16,6 +16,7 @@ namespace DmD.WebApi.Controllers
         }
 
         [Route("all")]
+        [HttpGet]
         public List<Map> GetMaps()
         {
             var result = new List<Map>();
@@ -25,10 +26,21 @@ namespace DmD.WebApi.Controllers
             return result;
         }
 
-        [Route("add")]
-        public Map AddMap(Map map)
+        [Route("create")]
+        [HttpPost]
+        public Map CreateMap(Map map)
         {
             _context.Maps.Add(map);
+            _context.SaveChanges();
+
+            return map;
+        }
+
+        [Route("delete")]
+        [HttpPost]
+        public Map DeleteMap(Map map)
+        {
+            _context.Maps.Remove(map);
             _context.SaveChanges();
 
             return map;

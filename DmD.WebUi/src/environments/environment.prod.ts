@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiPath: "http://localhost:57522/"
+  apiPath: "http://dmdapi.azurewebsites.net/"
 };

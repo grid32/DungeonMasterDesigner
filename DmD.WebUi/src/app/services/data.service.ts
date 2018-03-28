@@ -16,9 +16,15 @@ export class DataService {
     .map((res: Response) => res.json());
   }
 
-  public addMap(map : Map) {
+  public createMap(map : Map) {
     console.log("Saving " + map.Name);
-    return this.http.post(this.apiPath + "map/add", {id: 0, name: "Test"},{ withCredentials: true})
+    return this.http.post(this.apiPath + "map/create", map,{ withCredentials: true})
+    .map((res: Response) => res.json());
+  }
+
+  public deleteMap(map : Map) {
+    console.log("Saving " + map.Name);
+    return this.http.post(this.apiPath + "map/delete", map,{ withCredentials: true})
     .map((res: Response) => res.json());
   }
 }

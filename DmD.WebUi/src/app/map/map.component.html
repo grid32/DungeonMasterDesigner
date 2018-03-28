@@ -4,9 +4,7 @@
   </div>
   <div id='map-select' *ngIf='maps.length > 0'>
     <br>
-    <select [(ngModel)]='selectedMap'>
-      <option *ngFor='let m of maps' [ngValue]='m.Id'>{{m.Name}}</option>
-    </select>
+    <p *ngFor='let m of maps'>{{m.Name}}</p>
   </div>
 </div>
 <div *ngIf='constantService.mode == constantService.modes.Create'>

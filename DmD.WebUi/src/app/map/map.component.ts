@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
 
   public submitMap() {
     this.saving = true;
-    this.dataService.addMap(new Map(this.map.Name))
+    this.dataService.createMap(new Map(this.map.Name))
     .subscribe(map => {
       this.maps = [...this.maps, map];
       this.constantService.mode = this.constantService.modes.Read;
