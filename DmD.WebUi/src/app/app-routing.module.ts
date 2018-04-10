@@ -9,6 +9,7 @@ import { EditMapComponent } from './map/edit/edit.component';
 import { DeleteMapComponent } from './map/delete/delete.component';
 
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/maps', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'maps/:id/edit', component: EditMapComponent },
   { path: 'maps/:id/delete', component: DeleteMapComponent },
   { path: 'maps/:id', component: DetailMapComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ]
 
 @NgModule({

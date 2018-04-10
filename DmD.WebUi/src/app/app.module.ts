@@ -12,6 +12,7 @@ import { NewMapComponent } from './map/new/new.component';
 import { DetailMapComponent } from './map/detail/detail.component';
 import { EditMapComponent } from './map/edit/edit.component';
 import { DeleteMapComponent } from './map/delete/delete.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DeleteMapComponent } from './map/delete/delete.component';
     DetailMapComponent,
     KeysPipe,
     EditMapComponent,
-    DeleteMapComponent
+    DeleteMapComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
