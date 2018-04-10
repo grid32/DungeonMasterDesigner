@@ -36,21 +36,19 @@ namespace DmD.WebApi.Controllers
             return map;
         }
 
+        [Route("delete")]
+        [HttpPost]
+        public void DeleteMap(Map map)
+        {
+            _context.Maps.Remove(map);
+            _context.SaveChanges();
+        }
+
         [Route("{id}")]
         [HttpGet]
         public Map GetMap(int id)
         {
             return _context.Maps.Where(map => map.Id == id).FirstOrDefault();
-        }
-
-        [Route("delete")]
-        [HttpPost]
-        public Map DeleteMap(Map map)
-        {
-            _context.Maps.Remove(map);
-            _context.SaveChanges();
-
-            return map;
         }
     }
 }

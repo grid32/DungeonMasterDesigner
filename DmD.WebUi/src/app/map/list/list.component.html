@@ -1,0 +1,11 @@
+<div>
+  <div>
+    <button class='btn btn-success' routerLink='/maps/new'>Create new map</button>
+  </div>
+  <div id='map-select' *ngIf='maps.length > 0'>
+    <br>
+    <div *ngFor='let m of maps'>
+      <a [routerLink]='["/maps", m.Id]'>{{m.Name}}</a>
+    </div>
+  </div>
+</div>

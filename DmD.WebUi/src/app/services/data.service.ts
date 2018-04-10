@@ -16,6 +16,11 @@ export class DataService {
     .map((res: Response) => res.json());
   }
 
+  public getMap(id : number) {
+    return this.http.get(this.apiPath + "map/" + id, { withCredentials: true})
+    .map((res: Response) => res.json());
+  }
+
   public createMap(map : Map) {
     console.log("Saving " + map.Name);
     return this.http.post(this.apiPath + "map/create", map,{ withCredentials: true})
@@ -23,7 +28,7 @@ export class DataService {
   }
 
   public deleteMap(map : Map) {
-    console.log("Saving " + map.Name);
+    console.log("Delete triggered.");
     return this.http.post(this.apiPath + "map/delete", map,{ withCredentials: true})
     .map((res: Response) => res.json());
   }
