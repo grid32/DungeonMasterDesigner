@@ -64,7 +64,7 @@ namespace DmD.WebApi.Controllers
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
-
+                
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()

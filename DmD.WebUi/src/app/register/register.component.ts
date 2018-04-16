@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CONSTANTS } from '../constants';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  private CONSTANTS = CONSTANTS;
+  private email = "";
+  private password = "";
+  private confirm = "";
+
+  constructor(private dataService : DataService) { }
 
   ngOnInit() {
   }
 
+  private Submit() {
+    this.dataService.register({
+      email: this.email, 
+      password: this.password,
+      confirmpassword: this.confirm
+    }).subscribe(res => {
+
+    });
+  }
 }
