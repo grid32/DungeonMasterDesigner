@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CONSTANTS } from '../constants';
 import { DataService } from '../services/data.service';
+import { TokenService } from '../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
   private email = "";
   private password = "";
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private tokenService : TokenService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -22,8 +24,9 @@ export class LoginComponent implements OnInit {
     this.dataService.login({
       email: this.email, 
       password: this.password,
-    }).subscribe(res => {
-
+    }).subscribe(token => {
+      this.tokenService.setToken(token);
+      this.router.navigateByUrl('/maps');
     });
   }
 }

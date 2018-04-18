@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent, KeysPipe } from './app.component';
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +13,7 @@ import { DetailMapComponent } from './map/detail/detail.component';
 import { EditMapComponent } from './map/edit/edit.component';
 import { DeleteMapComponent } from './map/delete/delete.component';
 import { RegisterComponent } from './register/register.component';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { RegisterComponent } from './register/register.component';
     ListMapComponent,
     NewMapComponent,
     DetailMapComponent,
-    KeysPipe,
     EditMapComponent,
     DeleteMapComponent,
     RegisterComponent
@@ -34,7 +34,8 @@ import { RegisterComponent } from './register/register.component';
     HttpModule
   ],
   providers: [
-    DataService
+    DataService,
+    TokenService
   ],
   bootstrap: [ AppComponent ]
 })

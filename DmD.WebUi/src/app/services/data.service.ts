@@ -12,22 +12,22 @@ export class DataService {
   private apiPath = environment.apiPath;
 
   public register(account) {
-    return this.http.post(this.apiPath + "account/register", account, { withCredentials: true })
+    return this.http.post(this.apiPath + "account/register", account)
     .map((res : Response) => res.json());
   }
 
   public login(account) {
-    return this.http.post(this.apiPath + "token", "grant_type=password&username=" + account.email + "&password=" + account.password, { withCredentials: true })
+    return this.http.post(this.apiPath + "token", "grant_type=password&username=" + account.email + "&password=" + account.password)
     .map((res : Response) => res.json());
   }
 
   public getMaps() {
-    return this.http.get(this.apiPath + "map/all", { withCredentials: true })
+    return this.http.get(this.apiPath + "map/all")
     .map((res: Response) => res.json());
   }
 
   public getMap(id : number) {
-    return this.http.get(this.apiPath + "map/" + id, { withCredentials: true })
+    return this.http.get(this.apiPath + "map/" + id)
     .map((res: Response) => res.json());
   }
 

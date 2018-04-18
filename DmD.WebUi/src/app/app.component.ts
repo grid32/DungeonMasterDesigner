@@ -1,15 +1,5 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({name: 'keys'})
-export class KeysPipe implements PipeTransform {
-  transform(value, args:string[]) : any {
-    let keys = [];
-    for (let key in value) {
-      keys.push({key: key, value: value[key]});
-    }
-    return keys;
-  }
-}
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +8,11 @@ export class KeysPipe implements PipeTransform {
 })
 export class AppComponent {
   public title = 'DmD';
+  public token;
+
+  constructor(tokenService : TokenService) {
+    tokenService.getToken().subscribe(token => {
+      this.token = token;
+    })
+  }
 }

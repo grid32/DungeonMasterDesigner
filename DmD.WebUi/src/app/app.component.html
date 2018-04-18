@@ -4,8 +4,9 @@
       <a class="navbar-brand" routerLink="/maps">{{title}}</a>
     </div>
     <ul style="float:right" class="nav navbar-nav">
-      <li><a routerLink="/register">Register</a></li>
-      <li><a routerLink="/login">Login</a></li>
+      <li *ngIf="!token"><a routerLink="/register">Register</a></li>
+      <li *ngIf="!token"><a routerLink="/login">Login</a></li>
+      <li *ngIf="token"><a routerLink="/user">{{token.userName}}</a></li>
     </ul>
   </div>
 </nav>

@@ -1,4 +1,4 @@
-<div *ngFor="let field of data | keys">
+<div *ngFor="let field of data">
   <p>{{field.key}}: {{field.value}}</p>
 </div>
 <button *ngIf="data" [routerLink]="['/maps', data.Id, 'edit']" [queryParams]="data" skipLocationChange class="btn">Edit</button> 
