@@ -15,18 +15,21 @@ using Microsoft.Owin.Security.OAuth;
 using DmD.WebApi.Models;
 using DmD.WebApi.Providers;
 using DmD.WebApi.Results;
+using System.Linq;
 
 namespace DmD.WebApi.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        public DmdContext context { get; set; }
 
         public AccountController()
         {
+            context = new DmdContext();
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -34,6 +37,7 @@ namespace DmD.WebApi.Controllers
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            context = new DmdContext();
         }
 
         public ApplicationUserManager UserManager
@@ -50,9 +54,16 @@ namespace DmD.WebApi.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
+        [Route("all")]
+        [AllowAnonymous]
+        public List<IdentityUser> GetUsers()
+        {
+            return context.Users.ToList();
+        }
+
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("UserInfo")]
+        [Route("userInfo")]
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
@@ -66,7 +77,7 @@ namespace DmD.WebApi.Controllers
         }
                 
         // POST api/Account/Logout
-        [Route("Logout")]
+        [Route("logout")]
         public IHttpActionResult Logout()
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
@@ -74,7 +85,7 @@ namespace DmD.WebApi.Controllers
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
-        [Route("ManageInfo")]
+        [Route("manageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
             IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -114,7 +125,7 @@ namespace DmD.WebApi.Controllers
         }
 
         // POST api/Account/ChangePassword
-        [Route("ChangePassword")]
+        [Route("changePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -134,7 +145,7 @@ namespace DmD.WebApi.Controllers
         }
 
         // POST api/Account/SetPassword
-        [Route("SetPassword")]
+        [Route("setPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -153,7 +164,7 @@ namespace DmD.WebApi.Controllers
         }
 
         // POST api/Account/AddExternalLogin
-        [Route("AddExternalLogin")]
+        [Route("addExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -191,7 +202,7 @@ namespace DmD.WebApi.Controllers
         }
 
         // POST api/Account/RemoveLogin
-        [Route("RemoveLogin")]
+        [Route("removeLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -223,7 +234,7 @@ namespace DmD.WebApi.Controllers
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
-        [Route("ExternalLogin", Name = "ExternalLogin")]
+        [Route("externalLogin", Name = "ExternalLogin")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
         {
             if (error != null)
@@ -278,7 +289,7 @@ namespace DmD.WebApi.Controllers
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
         [AllowAnonymous]
-        [Route("ExternalLogins")]
+        [Route("externalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
         {
             IEnumerable<AuthenticationDescription> descriptions = Authentication.GetExternalAuthenticationTypes();
@@ -319,7 +330,7 @@ namespace DmD.WebApi.Controllers
 
         // POST api/Account/Register
         [AllowAnonymous]
-        [Route("Register")]
+        [Route("register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -342,7 +353,7 @@ namespace DmD.WebApi.Controllers
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("RegisterExternal")]
+        [Route("registerExternal")]
         public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
         {
             if (!ModelState.IsValid)

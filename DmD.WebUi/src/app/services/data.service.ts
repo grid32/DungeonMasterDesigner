@@ -9,10 +9,15 @@ import 'rxjs/add/operator/map';
 export class DataService {
   constructor(private http: Http) { }
 
-  private apiPath = environment.apiPathDev;
+  private apiPath = environment.apiPath;
 
   public register(account) {
-    return this.http.post(this.apiPath + "api/Account/Register", account, { withCredentials: true })
+    return this.http.post(this.apiPath + "account/register", account, { withCredentials: true })
+    .map((res : Response) => res.json());
+  }
+
+  public login(account) {
+    return this.http.post(this.apiPath + "token", "grant_type=password&username=" + account.email + "&password=" + account.password, { withCredentials: true })
     .map((res : Response) => res.json());
   }
 
