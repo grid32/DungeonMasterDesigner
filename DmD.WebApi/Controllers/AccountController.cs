@@ -61,6 +61,12 @@ namespace DmD.WebApi.Controllers
             return context.Users.ToList();
         }
 
+        [Route("{userName}")]
+        public IdentityUser GetUser(string userName)
+        {
+            return context.Users.FirstOrDefault(u => u.UserName == userName);
+        }
+
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("userInfo")]

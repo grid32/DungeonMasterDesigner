@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment.prod';
 import { Map } from '../models/index'
 import 'rxjs/add/operator/map';
+import { CacheService } from '.';
+import { CONSTANTS } from '../constants';
 
 @Injectable()
 export class DataService {
@@ -19,6 +21,11 @@ export class DataService {
   public login(account) {
     return this.http.post(this.apiPath + "token", "grant_type=password&username=" + account.email + "&password=" + account.password)
     .map((res : Response) => res.json());
+  }
+
+  public getUser(userName) {
+    return this.http.get(this.apiPath + "account/" + userName)
+    .map((res: Response) => res.json());
   }
 
   public getMaps() {

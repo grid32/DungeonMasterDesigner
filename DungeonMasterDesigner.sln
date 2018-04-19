@@ -37,7 +37,6 @@ Global
 		{59ED8F3E-E89B-4638-8A49-A13BECEBF097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59ED8F3E-E89B-4638-8A49-A13BECEBF097}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82607FF8-95C7-4738-ABF4-3363578AAB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82607FF8-95C7-4738-ABF4-3363578AAB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82607FF8-95C7-4738-ABF4-3363578AAB58}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

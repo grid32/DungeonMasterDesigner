@@ -11,6 +11,16 @@ export class CacheService {
 
   public load(key: string) {
     var str = localStorage[key];
+    if(str) {
+      var obj = JSON.parse(str);
+      if(obj[".expires"]) {
+        var expiry = new Date(obj[".expires"]);
+        if(expiry < new Date()) {
+          localStorage.removeItem(key);
+          str = null;
+        }
+      }
+    }
     return str ? JSON.parse(str) : null;
   }
 }

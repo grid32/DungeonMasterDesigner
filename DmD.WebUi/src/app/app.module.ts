@@ -9,7 +9,8 @@ import { AppRoutingModule, LoginRouteGuard } from './app-routing.module';
 import { 
   LoginComponent,
   RegisterComponent,
-  HomeComponent
+  HomeComponent,
+  UserComponent
 } from './views/index'
 
 import { DataService, TokenService, CacheService } from './services/index';
@@ -19,7 +20,8 @@ import { DataService, TokenService, CacheService } from './services/index';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
