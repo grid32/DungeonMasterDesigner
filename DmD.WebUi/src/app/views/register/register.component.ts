@@ -29,7 +29,7 @@ export class RegisterComponent {
       password: this.password,
       confirmpassword: this.confirm
     })
-    .subscribe(res => {
+    .subscribe(registration => {
       this.dataService.login({
         email: this.email, 
         password: this.password,
@@ -50,7 +50,13 @@ export class RegisterComponent {
       })
     },
     registerError => {
-      
+      this.busy = false;
+        if(typeof(registerError._body) === typeof("")) {
+          alert(registerError._body);
+        }
+        else {
+          alert("An unexpected error occurred.");
+        }
     });
   }
 }

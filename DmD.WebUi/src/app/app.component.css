@@ -1,18 +1,38 @@
-a {
+.dropdown-btn {
+    cursor: pointer;
+    color: #777;
+}
+
+.dropdown-btn:hover {
+    cursor: pointer;
+    color: #333;
+}
+
+.dropdown {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dropdown ul {
+    visibility: hidden;
+    opacity: 0;
+    top: 70%;
+}
+
+.dropdown.open ul {
+    visibility: visible;
+    opacity: 1;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s
+}
+
+.dropdown.open ul li {
     cursor: pointer;
 }
 
-.user-dropdown {
+.dropdown-menu {
     padding: 5px;
-    display: block;
-    position: absolute;
-    background: rgb(173, 173, 173);
-    cursor: pointer;
-}
-
-.user-dropdown.show {
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
-    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    width: fit-content;
+    min-width: 0;
 }
 
 @-webkit-keyframes fadein {

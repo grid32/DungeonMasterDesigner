@@ -15,6 +15,6 @@
       required [(ngModel)]="password" name="password">
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid || busy">{{busy ? 'Submitting' : 'Submit'}}</button>
   </form>
 </div>
