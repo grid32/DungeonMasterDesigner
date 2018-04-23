@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http'
+import { Http, Response, RequestOptions, Headers } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment.prod';
 import { Map } from '../models/index'
@@ -12,6 +12,13 @@ export class DataService {
   constructor(private http: Http) { }
 
   private apiPath = environment.apiPath;
+  private getTokenHeader(token) {
+    var options = new RequestOptions();
+    options.headers = new Headers({
+      "Authorization": "bearer " + token
+    });
+    return options;
+  }
 
   public register(account) {
     return this.http.post(this.apiPath + "account/register", account)
@@ -23,10 +30,10 @@ export class DataService {
     .map((res : Response) => res.json());
   }
 
-  public getUser(userName) {
-    return this.http.get(this.apiPath + "account/" + userName)
-    .map((res: Response) => res.json());
-  }
+  // public getUser(token) {
+  //   return this.http.get(this.apiPath + "account/me", this.getTokenHeader(token))
+  //   .map((res: Response) => res.json());
+  // }
 
   public getMaps() {
     return this.http.get(this.apiPath + "map/all")

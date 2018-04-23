@@ -16,6 +16,7 @@ using DmD.WebApi.Models;
 using DmD.WebApi.Providers;
 using DmD.WebApi.Results;
 using System.Linq;
+using System.Security.Principal;
 
 namespace DmD.WebApi.Controllers
 {
@@ -59,12 +60,6 @@ namespace DmD.WebApi.Controllers
         public List<IdentityUser> GetUsers()
         {
             return context.Users.ToList();
-        }
-
-        [Route("{userName}")]
-        public IdentityUser GetUser(string userName)
-        {
-            return context.Users.FirstOrDefault(u => u.UserName == userName);
         }
 
         // GET api/Account/UserInfo

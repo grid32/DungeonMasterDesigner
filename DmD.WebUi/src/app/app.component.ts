@@ -2,6 +2,7 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { TokenService } from './services/token.service';
 import { CONSTANTS } from './constants';
 import { CacheService } from './services/cache.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,14 @@ import { CacheService } from './services/cache.service';
 export class AppComponent {
   public title = 'DmD';
   public token;
+  private showUserDrop = false;
 
-  constructor(private tokenService: TokenService, private cacheService: CacheService) {
+  private Logout() {
+    this.tokenService.setToken(null);
+    this.router.navigateByUrl("/");
+  }
+
+  constructor(private tokenService: TokenService, private cacheService: CacheService, private router: Router) {
     tokenService.getToken().subscribe(token => {
       this.token = token;
     });

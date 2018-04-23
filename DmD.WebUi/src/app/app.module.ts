@@ -10,7 +10,6 @@ import {
   LoginComponent,
   RegisterComponent,
   HomeComponent,
-  UserComponent
 } from './views/index'
 
 import { DataService, TokenService, CacheService } from './services/index';
@@ -21,7 +20,6 @@ import { DataService, TokenService, CacheService } from './services/index';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,

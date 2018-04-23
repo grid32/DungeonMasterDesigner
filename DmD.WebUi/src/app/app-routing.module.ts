@@ -5,7 +5,6 @@ import {
   LoginComponent,
   RegisterComponent,
   HomeComponent,
-  UserComponent
 } from './views/index'
 
 import { CacheService } from './services/index'
@@ -25,8 +24,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginRouteGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [LoginRouteGuard] },
-  { path: 'user', component: UserComponent }
+  { path: 'register', component: RegisterComponent, canActivate: [LoginRouteGuard] }
 ]
 
 @NgModule({
