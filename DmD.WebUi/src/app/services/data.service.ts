@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment.prod';
-import { Map } from '../models/index'
+import { Map, Campaign } from '../models/index'
 import 'rxjs/add/operator/map';
 import { CacheService } from '.';
 import { CONSTANTS } from '../constants';
@@ -30,30 +30,8 @@ export class DataService {
     .map((res : Response) => res.json());
   }
 
-  // public getUser(token) {
-  //   return this.http.get(this.apiPath + "account/me", this.getTokenHeader(token))
-  //   .map((res: Response) => res.json());
-  // }
-
-  public getMaps() {
-    return this.http.get(this.apiPath + "map/all")
-    .map((res: Response) => res.json());
-  }
-
-  public getMap(id : number) {
-    return this.http.get(this.apiPath + "map/" + id)
-    .map((res: Response) => res.json());
-  }
-
-  public createMap(map : Map) {
-    console.log("Saving " + map.Name);
-    return this.http.post(this.apiPath + "map/create", map,{ withCredentials: true })
-    .map((res: Response) => res.json());
-  }
-
-  public deleteMap(map : Map) {
-    console.log("Delete triggered.");
-    return this.http.post(this.apiPath + "map/delete", map,{ withCredentials: true })
-    .map((res: Response) => res.json());
+  public getCampaigns() {
+    return this.http.get(this.apiPath + "campaigns/mine")
+    .map((res: Response) => res.json().map(c => new Campaign(c)));
   }
 }

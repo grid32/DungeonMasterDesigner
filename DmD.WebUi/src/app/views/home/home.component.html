@@ -1,3 +1,10 @@
 <div class="banner">
   <h1>Welcome to Dungeon Master Designer!</h1>
 </div>
+<div *ngIf="token">
+  Select a campaign:
+  <div *ngIf="campaignsLoading" class="row spinner"></div>
+  <div class="row" *ngFor="let campaign of campaigns">
+    {{campaign.Id}}: {{campaign.Name}}
+  </div>
+</div>

@@ -10,6 +10,8 @@ namespace DmD.WebApi.Models
     {
         public DmdContext() : base("name=DmdConnection") {}
 
+        public DbSet<Campaign> Campaigns { get; set; }
+
         public DbSet<Map> Maps { get; set; }
 
         public static DmdContext Create()

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CacheService, DataService } from '../../services';
+import { CONSTANTS } from '../../constants';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private token = null;
+  private campaigns = [];
+  private campaignsLoading = true;
+
+  constructor(private cacheService: CacheService, private dataService: DataService) { }
 
   ngOnInit() {
+    this.token = this.cacheService.load(CONSTANTS.tokenName);
+
+    if(this.token) {
+      this.dataService.getCampaigns().subscribe(campaigns => {
+        this.campaigns = campaigns;
+        this.campaignsLoading = false;
+      })
+    }
   }
 
 }

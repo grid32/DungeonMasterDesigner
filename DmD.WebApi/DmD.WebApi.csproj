@@ -205,7 +205,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\CampaignController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,9 +217,18 @@
     <Compile Include="Migrations\201804180101453_Users to context.Designer.cs">
       <DependentUpon>201804180101453_Users to context.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805021456553_Campaign and map init.cs" />
+    <Compile Include="Migrations\201805021456553_Campaign and map init.Designer.cs">
+      <DependentUpon>201805021456553_Campaign and map init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805021506288_Added Campaign name.cs" />
+    <Compile Include="Migrations\201805021506288_Added Campaign name.Designer.cs">
+      <DependentUpon>201805021506288_Added Campaign name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Campaign.cs" />
     <Compile Include="Models\DmdContext.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -256,6 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804180101453_Users to context.resx">
       <DependentUpon>201804180101453_Users to context.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021456553_Campaign and map init.resx">
+      <DependentUpon>201805021456553_Campaign and map init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021506288_Added Campaign name.resx">
+      <DependentUpon>201805021506288_Added Campaign name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
