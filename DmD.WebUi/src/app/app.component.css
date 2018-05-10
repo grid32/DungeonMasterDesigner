@@ -44,3 +44,14 @@
     from { visibility: visible; opacity: 1; }
     to { visibility: hidden; opacity: 0; }
 }
+
+:after {
+    display: inline !important;
+    padding-top: auto;
+}
+
+ul.nav.navbar-nav, .navbar:before, .navbar:after,
+.nav:before, .nav:after .navbar-header:before, .navbar-header:after, .row:before, .row:after{
+    display: inline !important;
+    margin: 0 0 !important;
+}
